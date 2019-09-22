@@ -1,0 +1,19 @@
+{
+  "name": "dota-shuffler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ampa1R/dota-shuffler.git"
+  },
+  "author": "Filipp Vasilev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ampa1R/dota-shuffler/issues"
+  },
+  "homepage": "https://github.com/Ampa1R/dota-shuffler#readme"
+}
