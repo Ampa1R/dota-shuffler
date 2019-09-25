@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
-interface IAppState {
-    
-}
+class App extends React.Component {
+    constructor(props: {}) {
+        super(props);
+        this.state = {};
+    }
 
-class App extends Component<IAppState> {
-    state = {}
-
-    render() {
+    render(): React.ReactNode {
         return (
             <div>
                 <div className="App">
-                        <header className="App-header">
-                            there is an app
-                    </header>
+                    <header className="App-header">there is an app</header>
                 </div>
             </div>
         );
