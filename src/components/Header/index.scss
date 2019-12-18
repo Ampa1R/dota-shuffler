@@ -1,6 +1,9 @@
 .Header {  
     &__Title {
         font-size: 28px;
+        text-transform: uppercase;
+        font-weight: 500;
+        line-height: 1.7;
     }
 
     &__Tagline {
