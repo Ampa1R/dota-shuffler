@@ -1,15 +1,11 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Result from '../../components/Result';
+import { ResultModel } from '../../models';
 import './index.scss';
-import items from '../../data/artifacts.json';
 
 interface State {
-    result: {
-        hero: number | null;
-        boot: number | null;
-        items: number[];
-    };
+    result: ResultModel;
 }
 
 class App extends React.Component<{}, State> {
@@ -17,15 +13,11 @@ class App extends React.Component<{}, State> {
         super(props);
         this.state = {
             result: {
-                hero: null,
-                boot: null,
-                items: [],
+                hero: {},
+                boot: {},
+                items: [{}, {}, {}, {}, {}],
             },
         };
-    }
-
-    componentDidMount(): void {
-        console.log(items);
     }
 
     render(): React.ReactNode {
@@ -34,7 +26,11 @@ class App extends React.Component<{}, State> {
             <div>
                 <div className="App">
                     <Header />
-                    <Result result={result} />
+                    <Result
+                        hero={result.hero}
+                        boot={result.boot}
+                        items={result.items}
+                    />
                 </div>
             </div>
         );

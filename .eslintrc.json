@@ -42,6 +42,10 @@
                     ".tsx"
                 ]
             }
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
         ]
     },
     "settings": {
