@@ -2,11 +2,13 @@ import React from 'react';
 import { ItemModel } from '../../models';
 
 interface Props {
-    item: ItemModel;
+    item: ItemModel | undefined;
 }
 
 const ResultItem: React.FC<Props> = ({ item }: Props) => (
-    <div className="Result__Item">{item.name}</div>
+    <div className="Result__Item">
+        {item && item.id && <img src={item.url} alt={item.name} />}
+    </div>
 );
 
 export default ResultItem;

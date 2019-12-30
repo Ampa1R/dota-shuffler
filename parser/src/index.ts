@@ -1,6 +1,5 @@
-const attributes = require('./enums/attributes');
-const { getHeroes } = require('./options/heroes');
-const { getItems } = require('./options/items');
+import { getHeroes } from './options/heroes';
+import { getItems } from './options/items';
 
 const args = process.argv.slice(2);
 let anythingIsCalled = false;

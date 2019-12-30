@@ -1,17 +1,23 @@
 export interface HeroModel {
     id?: number;
     name?: string;
-    url?: string;
+    shortName?: string;
+    urlIcon?: string;
+    urlLg?: string;
+    urlFull?: string;
+    urlVert?: string;
 }
 
 export interface ItemModel {
     id?: number;
     name?: string;
+    shortName?: string;
     url?: string;
+    isBoots?: boolean;
 }
 
 export interface ResultModel {
-    hero: HeroModel;
-    boot: ItemModel;
-    items: ItemModel[];
+    hero: HeroModel | undefined;
+    boot: ItemModel | undefined;
+    items: (ItemModel | undefined)[];
 }
