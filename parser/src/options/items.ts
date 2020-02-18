@@ -1,6 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 import { itemsApi } from '../enums/api';
+import { resultDirectory } from '../enums/config';
 import { ItemModel } from '../../../src/models/index';
 
 const itemImagesBaseUrl = 'http://cdn.dota2.com/apps/dota2/images/items';
@@ -14,6 +15,7 @@ type ItemFromApi = {
         behavior: number;
         isRecipe: boolean;
         isPurchaseable: boolean;
+        cost: number;
     };
 };
 
@@ -36,7 +38,8 @@ export const getItems = async (): Promise<void> => {
                 item.stat &&
                 !item.stat.isRecipe &&
                 item.stat.isPurchaseable &&
-                item.stat.behavior !== 16, // mango tree, shovel, paints, etc...
+                item.stat.behavior !== 16 && // mango tree, shovel, paints, etc...
+                item.stat.cost > 1000,
         )
         .map((item: ItemFromApi) => ({
             id: item.id,
@@ -44,9 +47,10 @@ export const getItems = async (): Promise<void> => {
             shortName: item.shortName,
             url: `${itemImagesBaseUrl}/${item.image}`,
             isBoots: bootsShortNames.includes(item.shortName),
+            cost: item.stat.cost,
         }));
     fs.writeFile(
-        'items.json',
+        `${resultDirectory}/items.json`,
         JSON.stringify(formattedItems.filter(item => !item.isBoots)),
         'utf8',
         (err): void => {
@@ -60,7 +64,7 @@ export const getItems = async (): Promise<void> => {
         },
     );
     fs.writeFile(
-        'boots.json',
+        `${resultDirectory}/boots.json`,
         JSON.stringify(formattedItems.filter(item => item.isBoots)),
         'utf8',
         (err): void => {

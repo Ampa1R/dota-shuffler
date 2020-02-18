@@ -14,6 +14,7 @@ export interface ItemModel {
     shortName?: string;
     url?: string;
     isBoots?: boolean;
+    cost?: number;
 }
 
 export interface ResultModel {

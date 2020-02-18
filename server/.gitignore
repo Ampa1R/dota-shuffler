@@ -1,10 +1,5 @@
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
 
 # production
 /build
@@ -22,6 +17,3 @@ yarn-error.log*
 
 /.idea
 /.vscode
-
-# parsed data
-data

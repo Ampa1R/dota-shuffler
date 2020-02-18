@@ -1,8 +1,14 @@
+import fs from 'fs';
 import { getHeroes } from './options/heroes';
 import { getItems } from './options/items';
+import { resultDirectory } from './enums/config';
 
 const args = process.argv.slice(2);
 let anythingIsCalled = false;
+
+if (!fs.existsSync(resultDirectory)) {
+    fs.mkdirSync(resultDirectory);
+}
 
 if (args.includes('--heroes')) {
     getHeroes();
@@ -16,4 +22,3 @@ if (args.includes('--items')) {
 if (!anythingIsCalled) {
     console.log('You need to specify at least 1 argument');
 }
-// getHeroes();

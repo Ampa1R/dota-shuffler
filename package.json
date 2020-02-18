@@ -9,11 +9,14 @@
     "react-scripts": "3.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint './src/**/*.{ts,tsx}'"
+    "front:dev": "react-scripts start",
+    "front:build": "react-scripts build",
+    "front:test": "react-scripts test",
+    "front:eject": "react-scripts eject",
+    "front:lint": "eslint './src/**/*.{ts,tsx}'",
+    "start": "npm run build && npm run serve",
+    "build": "npm run front:build && cd server && npm run build",
+    "serve": "cd server && npm run serve"
   },
   "eslintConfig": {
     "extends": "react-app"

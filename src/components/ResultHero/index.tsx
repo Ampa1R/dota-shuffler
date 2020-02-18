@@ -7,7 +7,9 @@ interface Props {
 
 const ResultHero: React.FC<Props> = ({ hero }: Props) => (
     <div className="Result__Hero">
-        {hero && hero.id && <img src={hero.urlVert} alt={hero.name} />}
+        {hero && hero.id && (
+            <img src={hero.urlVert} alt={hero.name} title={hero.name} />
+        )}
     </div>
 );
 

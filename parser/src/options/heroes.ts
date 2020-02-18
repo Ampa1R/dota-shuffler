@@ -1,6 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 import { heroesApi } from '../enums/api';
+import { resultDirectory } from '../enums/config';
 import { HeroModel } from '../../../src/models/index';
 
 const heroImagesBaseUrl = 'http://cdn.dota2.com/apps/dota2/images/heroes';
@@ -36,7 +37,7 @@ export const getHeroes = async (): Promise<void> => {
         }),
     );
     fs.writeFile(
-        'heroes.json',
+        `${resultDirectory}/heroes.json`,
         JSON.stringify(formattedHeroes),
         'utf8',
         (err): void => {
