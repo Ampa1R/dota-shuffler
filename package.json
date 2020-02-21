@@ -20,8 +20,10 @@
     "front:test": "react-scripts test",
     "front:eject": "react-scripts eject",
     "front:lint": "eslint './src/**/*.{ts,tsx}'",
+    "server:build": "cd server && npm run build",
+    "parse": "cd parser && npm run start",
     "prod": "npm run build && npm run serve",
-    "build": "npm run front:build && cd server && npm run build",
+    "build": "npm run parse && npm run front:build && npm run server:build",
     "start": "cd server && npm run serve"
   },
   "eslintConfig": {
