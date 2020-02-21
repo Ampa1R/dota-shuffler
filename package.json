@@ -19,9 +19,9 @@
     "front:test": "react-scripts test",
     "front:eject": "react-scripts eject",
     "front:lint": "eslint './src/**/*.{ts,tsx}'",
-    "start": "npm run build && npm run serve",
+    "prod": "npm run build && npm run serve",
     "build": "npm run front:build && cd server && npm run build",
-    "serve": "cd server && npm run serve"
+    "start": "cd server && npm run serve"
   },
   "eslintConfig": {
     "extends": "react-app"
