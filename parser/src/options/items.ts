@@ -1,5 +1,6 @@
 import axios from 'axios';
 import fs from 'fs';
+import whitelist from '../../whitelist.json';
 import { itemsApi } from '../enums/api';
 import { resultDirectory } from '../enums/config';
 import { ItemModel } from '../../../src/models/index';
@@ -19,34 +20,22 @@ type ItemFromApi = {
     };
 };
 
-const bootsShortNames: string[] = [
-    'phase_boots',
-    'power_treads',
-    'boots',
-    'arcane_boots',
-    'tranquil_boots',
-    'travel_boots',
-];
-
 // eslint-disable-next-line import/prefer-default-export
 export const getItems = async (): Promise<void> => {
     console.log('Parsing Items');
     const res = await axios.get(itemsApi);
     const formattedItems: ItemModel[] = Object.values(res.data)
         .filter(
-            (item: ItemFromApi) =>
-                item.stat &&
-                !item.stat.isRecipe &&
-                item.stat.isPurchaseable &&
-                item.stat.behavior !== 16 && // mango tree, shovel, paints, etc...
-                item.stat.cost > 1000,
+            ({ shortName }: ItemFromApi) =>
+                whitelist.items.includes(shortName) ||
+                whitelist.boots.includes(shortName),
         )
         .map((item: ItemFromApi) => ({
             id: item.id,
             name: item.displayName,
             shortName: item.shortName,
             url: `${itemImagesBaseUrl}/${item.image}`,
-            isBoots: bootsShortNames.includes(item.shortName),
+            isBoots: whitelist.boots.includes(item.shortName),
             cost: item.stat.cost,
         }));
     fs.writeFile(
