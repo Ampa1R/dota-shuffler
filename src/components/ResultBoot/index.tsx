@@ -7,7 +7,7 @@ interface Props {
 
 const ResultBoot: React.FC<Props> = ({ boot }: Props) => (
     <div className="Result__Item Result__Item--boot">
-        {boot && boot.id && <img src={boot.url} alt={boot.name} />}
+        {boot && boot.url && <img src={boot.url} alt={boot.name} />}
     </div>
 );
 

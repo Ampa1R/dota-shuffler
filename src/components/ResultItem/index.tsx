@@ -7,7 +7,7 @@ interface Props {
 
 const ResultItem: React.FC<Props> = ({ item }: Props) => (
     <div className="Result__Item">
-        {item && item.id && <img src={item.url} alt={item.name} />}
+        {item && item.url && <img src={item.url} alt={item.name} />}
     </div>
 );
 

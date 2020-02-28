@@ -5,25 +5,20 @@ import { ResultModel } from '../../models';
 import './index.scss';
 import { getResult } from '../../helpers';
 
-interface State {
-    result: ResultModel;
-}
-
-class App extends React.Component<{}, State> {
+class App extends React.Component<{}, { result: ResultModel }> {
     constructor(props: {}) {
         super(props);
         this.state = {
             result: {
                 hero: {},
                 boot: {},
-                items: [{}, {}, {}, {}, {}],
+                items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
             },
         };
     }
 
     handleClick = (): void => {
         const res = getResult();
-        console.log(res);
         this.setState(() => ({
             result: res,
         }));

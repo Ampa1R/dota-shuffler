@@ -20,5 +20,5 @@ export interface ItemModel {
 export interface ResultModel {
     hero: HeroModel | undefined;
     boot: ItemModel | undefined;
-    items: (ItemModel | undefined)[];
+    items: ItemModel[];
 }

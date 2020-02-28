@@ -9,13 +9,11 @@ export const randomInteger = (min: number, max: number): number => {
     return Math.floor(rand);
 };
 
-const getHero = (): HeroModel | undefined =>
-    heroes[randomInteger(0, heroes.length - 1)];
+const getHero = (): HeroModel => heroes[randomInteger(0, heroes.length - 1)];
 
-const getBoot = (): ItemModel | undefined =>
-    boots[randomInteger(0, boots.length - 1)];
+const getBoot = (): ItemModel => boots[randomInteger(0, boots.length - 1)];
 
-const getItems = (): (ItemModel | undefined)[] => {
+const getItems = (): ItemModel[] => {
     const indexes: number[] = [];
     let index;
     do {
