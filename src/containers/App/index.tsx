@@ -5,40 +5,45 @@ import { ResultModel } from '../../models';
 import './index.scss';
 import { getResult } from '../../helpers';
 
-class App extends React.Component<{}, { result: ResultModel }> {
+interface State {
+    result: ResultModel;
+}
+
+const defaultResult: ResultModel = {
+    hero: {},
+    boot: {},
+    items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
+};
+
+class App extends React.Component<{}, State> {
     constructor(props: {}) {
         super(props);
         this.state = {
-            result: {
-                hero: {},
-                boot: {},
-                items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
-            },
+            result: defaultResult,
         };
     }
 
     handleClick = (): void => {
-        const res = getResult();
         this.setState(() => ({
-            result: res,
+            result: defaultResult,
         }));
+        const result = getResult();
+        setTimeout(() => this.setState(() => ({ result })));
     };
 
     render(): React.ReactNode {
         const { result } = this.state;
         return (
-            <div>
-                <div className="App">
-                    <Header />
-                    <Result result={result} />
-                    <button
-                        type="button"
-                        className="Button"
-                        onClick={this.handleClick}
-                    >
-                        I’M FEELING LUCKY
-                    </button>
-                </div>
+            <div className="App">
+                <Header />
+                <Result result={result} />
+                <button
+                    type="button"
+                    className="Button"
+                    onClick={this.handleClick}
+                >
+                    I’M FEELING LUCKY
+                </button>
             </div>
         );
     }

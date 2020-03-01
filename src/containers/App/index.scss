@@ -1,8 +1,8 @@
 body {
     margin: 0;
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -16,41 +16,43 @@ body {
     align-items: center;
     justify-content: center;
     color: white;
+    padding: 50px 0;
+    box-sizing: border-box;
 
     &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 25px;
-      background-color: #2b2d32;
-      top: 0;
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 25px;
+        background-color: #2b2d32;
+        top: 0;
     }
 
     &__Link {
-      color: #09d3ac;
+        color: #09d3ac;
     }
 }
 
 .Button {
-  background-color: #43B581;
-  color: #fff;
-  text-transform: uppercase;
-  border: none;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 10px 25px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  font-family: inherit;
+    background-color: #43b581;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
 
-  &:focus {
-    outline: none;
-    background-color: mix(#43B581, #000, 90%);
-  }
+    &:focus {
+        outline: none;
+        background-color: mix(#43b581, #000, 90%);
+    }
 
-  &:hover {
-    background-color: mix(#43B581, #000, 85%);
-  }
+    &:hover {
+        background-color: mix(#43b581, #000, 85%);
+    }
 }

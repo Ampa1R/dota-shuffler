@@ -1,6 +1,10 @@
 .Header {
     margin-bottom: 20px;
 
+    @media screen and (max-width: 550px) {
+       margin-bottom: 0;
+    }
+
     &__Title {
         font-size: 28px;
         text-transform: uppercase;
