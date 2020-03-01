@@ -14,8 +14,11 @@ const getHero = (): HeroModel => heroes[randomInteger(0, heroes.length - 1)];
 const getBoot = (): ItemModel => boots[randomInteger(0, boots.length - 1)];
 
 const getItems = (): ItemModel[] => {
+    if (items.length < 5) {
+        return [];
+    }
     const indexes: number[] = [];
-    let index;
+    let index: number;
     do {
         index = randomInteger(0, items.length - 1);
         if (!indexes.includes(index)) {
