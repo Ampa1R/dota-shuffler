@@ -24,6 +24,7 @@
         "@typescript-eslint/indent": ["error", 4],
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
+        "no-console": "off",
         "prettier/prettier": [
             "error",
             {
@@ -42,7 +43,13 @@
                     ".tsx"
                 ]
             }
-        ]
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "implicit-arrow-linebreak": "off",
+        "operator-linebreak": "off"
     },
     "settings": {
         "react": {

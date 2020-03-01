@@ -1,0 +1,16 @@
+{
+  "name": "dota-parse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && npm run parse",
+    "build": "tsc",
+    "parse": "node dist/parser/src/index.js --heroes --items"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
