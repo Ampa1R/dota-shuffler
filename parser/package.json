@@ -9,5 +9,8 @@
     "parse": "node dist/parser/src/index.js --heroes --items"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
 }
