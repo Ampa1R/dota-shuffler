@@ -6,6 +6,7 @@ export interface HeroModel {
     urlLg?: string;
     urlFull?: string;
     urlVert?: string;
+    talents: TalentModel[];
 }
 
 export interface ItemModel {
@@ -21,4 +22,10 @@ export interface ResultModel {
     hero: HeroModel | undefined;
     boot: ItemModel | undefined;
     items: ItemModel[];
+}
+
+export interface TalentModel {
+    id: number;
+    name: string;
+    shortName: string;
 }
