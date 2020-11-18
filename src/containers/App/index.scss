@@ -8,6 +8,10 @@ body {
     background-color: #36393f;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 .App {
     text-align: center;
     min-height: 100vh;

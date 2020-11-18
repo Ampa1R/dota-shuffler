@@ -6,13 +6,14 @@ import { HeroModel, TalentModel } from '../../../src/models/index';
 
 const heroImagesBaseUrl = 'http://cdn.dota2.com/apps/dota2/images/heroes';
 
-type HeroFromApi = {
+interface HeroFromApi {
     id: number;
     displayName: string;
     shortName: string;
     roles: [];
     stat: {
-        heroPrimaryAttribute: string;
+        primaryAttribute: 'str' | 'agi' | 'int';
+        attackType: 'Melee' | 'Ranged';
     };
     talents: [
         {
@@ -20,7 +21,7 @@ type HeroFromApi = {
             abilityId: number;
         },
     ];
-};
+}
 
 interface AbilityFromApi {
     id: number;
@@ -50,21 +51,22 @@ export const getHeroes = async (): Promise<void> => {
                 shortName: item.name,
             };
         });
-    // Heroes
+    // Format heroes
     const res = await axios.get(heroesApi);
     const formattedHeroes: HeroModel[] = Object.values(res.data).map(
         (hero: HeroFromApi): HeroModel => ({
             id: hero.id,
             name: hero.displayName,
             shortName: hero.shortName,
+            attr: hero.stat.primaryAttribute,
             urlIcon: `${heroImagesBaseUrl}/${hero.shortName}_icon.png`,
             urlLg: `${heroImagesBaseUrl}/${hero.shortName}_lg.png`,
             urlFull: `${heroImagesBaseUrl}/${hero.shortName}_full.png`,
             urlVert: `${heroImagesBaseUrl}/${hero.shortName}_vert.jpg`,
             talents: hero.talents.map(talent => abilities[talent.abilityId]),
             // TODO:
-            // attr: hero.stat.heroPrimaryAttribute,
             // roles: hero.roles,
+            // attackType: hero.stat.attackType,
         }),
     );
     fs.writeFile(

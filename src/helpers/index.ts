@@ -1,4 +1,4 @@
-import { HeroModel, ItemModel, ResultModel } from '../models';
+import { HeroModel, ItemModel, ResultModel, TalentModel } from '../models';
 import heroes from '../data/heroes.json';
 import items from '../data/items.json';
 import boots from '../data/boots.json';
@@ -9,7 +9,26 @@ export const randomInteger = (min: number, max: number): number => {
     return Math.floor(rand);
 };
 
-const getHero = (): HeroModel => heroes[randomInteger(0, heroes.length - 1)];
+const getHero = (attrs: string[]): HeroModel => {
+    let hero = heroes[randomInteger(0, heroes.length - 1)];
+    for (let i = 0; i < heroes.length; i += 1) {
+        if (attrs.includes(hero.attr)) {
+            break;
+        }
+        hero = heroes[randomInteger(0, heroes.length - 1)];
+    }
+
+    const talents = [
+        randomInteger(0, 1),
+        randomInteger(2, 3),
+        randomInteger(4, 5),
+        randomInteger(6, 7),
+    ];
+    return {
+        ...hero,
+        talents: talents.map((i: number): TalentModel => hero.talents[i]),
+    };
+};
 
 const getBoot = (): ItemModel => boots[randomInteger(0, boots.length - 1)];
 
@@ -28,8 +47,8 @@ const getItems = (): ItemModel[] => {
     return indexes.map(i => items[i]);
 };
 
-export const getResult = (): ResultModel => ({
-    hero: getHero(),
+export const getResult = (attrs: string[]): ResultModel => ({
+    hero: getHero(attrs),
     boot: getBoot(),
     items: getItems(),
 });

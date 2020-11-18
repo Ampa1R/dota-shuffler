@@ -6,41 +6,63 @@ import './index.scss';
 import { getResult } from '../../helpers';
 
 interface State {
-    result: ResultModel;
+    result: ResultModel | null;
+    attrs: string[];
 }
-
-const defaultResult: ResultModel = {
-    hero: {},
-    boot: {},
-    items: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
-};
 
 class App extends React.Component<{}, State> {
     constructor(props: {}) {
         super(props);
         this.state = {
-            result: defaultResult,
+            result: null,
+            attrs: ['str', 'agi', 'int'],
         };
     }
 
-    handleClick = (): void => {
+    componentDidMount(): void {
+        window.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                this.handleRandom();
+            }
+        });
+    }
+
+    handleRandom = (): void => {
+        const { attrs } = this.state;
         this.setState(() => ({
-            result: defaultResult,
+            result: null,
         }));
-        const result = getResult();
+        const result = getResult(attrs);
         setTimeout(() => this.setState(() => ({ result })));
     };
 
+    handleAttrChange = (attr: string): void => {
+        const { attrs } = this.state;
+        if (attrs.includes(attr)) {
+            this.setState({
+                attrs: attrs.filter(a => a !== attr),
+            });
+        } else {
+            this.setState({
+                attrs: [...attrs, attr],
+            });
+        }
+    };
+
     render(): React.ReactNode {
-        const { result } = this.state;
+        const { result, attrs } = this.state;
         return (
             <div className="App">
                 <Header />
-                <Result result={result} />
+                <Result
+                    result={result}
+                    attrs={attrs}
+                    onAttrClick={this.handleAttrChange}
+                />
                 <button
                     type="button"
                     className="Button"
-                    onClick={this.handleClick}
+                    onClick={this.handleRandom}
                 >
                     I’M FEELING LUCKY
                 </button>

@@ -1,21 +1,23 @@
 export interface HeroModel {
-    id?: number;
-    name?: string;
-    shortName?: string;
-    urlIcon?: string;
-    urlLg?: string;
-    urlFull?: string;
-    urlVert?: string;
-    talents: TalentModel[];
+    id: number;
+    name: string;
+    shortName: string;
+    urlIcon: string;
+    urlLg: string;
+    urlFull: string;
+    urlVert: string;
+    talents?: TalentModel[];
+    // attr: 'str' | 'agi' | 'int';
+    attr: string;
 }
 
 export interface ItemModel {
-    id?: number;
-    name?: string;
-    shortName?: string;
-    url?: string;
-    isBoots?: boolean;
-    cost?: number;
+    id: number;
+    name: string;
+    shortName: string;
+    url: string;
+    isBoots: boolean;
+    cost: number;
 }
 
 export interface ResultModel {
@@ -26,6 +28,6 @@ export interface ResultModel {
 
 export interface TalentModel {
     id: number;
-    name: string;
+    name?: string;
     shortName: string;
 }
