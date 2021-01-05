@@ -1,2 +1,2 @@
-export const baseDirectory = '../src';
+export const baseDirectory = '../server/src';
 export const resultDirectory = `${baseDirectory}/data`;
