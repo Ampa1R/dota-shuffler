@@ -1,7 +1,7 @@
 import { HeroModel, ItemModel, ResultModel, TalentModel } from '../models';
-const heroes = require('../../data/heroes.json');
-const items = require('../../data/items.json');
-const boots = require('../../data/boots.json');
+import heroes from '../data/heroes.json';
+import items from '../data/items.json';
+import boots from '../data/boots.json';
 
 export const randomInteger = (min: number, max: number): number => {
     // случайное число от min до (max+1)
