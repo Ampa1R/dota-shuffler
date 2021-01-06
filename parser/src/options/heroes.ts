@@ -1,7 +1,6 @@
 import axios from 'axios';
 import fs from 'fs';
 import { heroesApi, abilitiesApi } from '../enums/api';
-import { resultDirectory } from '../enums/config';
 import { HeroModel, TalentModel } from '../../../src/models/index';
 
 const heroImagesBaseUrl = 'http://cdn.dota2.com/apps/dota2/images/heroes';
@@ -37,7 +36,7 @@ interface Abilities {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export const getHeroes = async (): Promise<void> => {
+export const getHeroes = async (directoryPath: string): Promise<void> => {
     console.log('Parsing Heroes');
     // Talents
     const abilitiesRes = await axios.get(abilitiesApi);
@@ -70,7 +69,7 @@ export const getHeroes = async (): Promise<void> => {
         }),
     );
     fs.writeFile(
-        `${resultDirectory}/heroes.json`,
+        `${directoryPath}/heroes.json`,
         JSON.stringify(formattedHeroes),
         'utf8',
         (err): void => {
