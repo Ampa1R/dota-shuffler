@@ -23,7 +23,7 @@
     "server:build": "cd server && npm run build",
     "parse": "cd parser && npm run start",
     "prod": "npm run build && npm run start",
-    "build": "npm run parse && npm run front:build && cd server/src && npm run build",
+    "build": "npm run parse && npm run front:build && cd server && npm run build",
     "start": "cd server && npm run serve"
   },
   "eslintConfig": {

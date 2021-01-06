@@ -13,8 +13,8 @@ app.listen(port, (): void => console.log(`App listening on port ${port}`));
 
 const attrs = ['str', 'agi', 'int'];
 
-app.get('/generate', (req: any, res: any) => {
+app.get('/api/generate', (req: any, res: any) => {
     const result = getResult(attrs);
-    
+
     res.json(result);
 });
