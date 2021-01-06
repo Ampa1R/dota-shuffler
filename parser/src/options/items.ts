@@ -2,7 +2,6 @@ import axios from 'axios';
 import fs from 'fs';
 import whitelist from '../../whitelist.json';
 import { itemsApi } from '../enums/api';
-import { resultDirectory } from '../enums/config';
 import { ItemModel } from '../../../src/models/index';
 
 const itemImagesBaseUrl = 'http://cdn.dota2.com/apps/dota2/images/items';
@@ -21,7 +20,7 @@ type ItemFromApi = {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const getItems = async (): Promise<void> => {
+export const getItems = async (directoryPath: string): Promise<void> => {
     console.log('Parsing Items');
     const res = await axios.get(itemsApi);
     const formattedItems: ItemModel[] = Object.values(res.data)
@@ -39,7 +38,7 @@ export const getItems = async (): Promise<void> => {
             cost: item.stat.cost,
         }));
     fs.writeFile(
-        `${resultDirectory}/items.json`,
+        `${directoryPath}/items.json`,
         JSON.stringify(formattedItems.filter(item => !item.isBoots)),
         'utf8',
         (err): void => {
@@ -53,7 +52,7 @@ export const getItems = async (): Promise<void> => {
         },
     );
     fs.writeFile(
-        `${resultDirectory}/boots.json`,
+        `${directoryPath}/boots.json`,
         JSON.stringify(formattedItems.filter(item => item.isBoots)),
         'utf8',
         (err): void => {
