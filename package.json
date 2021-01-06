@@ -6,8 +6,8 @@
     "node": "13.8.0"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "node-sass": "^4.14.1",
     "react": "^16.9.0",
