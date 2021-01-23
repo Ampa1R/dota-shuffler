@@ -3,7 +3,6 @@ import { getHeroes } from './options/heroes';
 import { getItems } from './options/items';
 import { resultDirectory, resultFrontDirectory } from './enums/config';
 
-
 const args = process.argv.slice(2);
 let anythingIsCalled = false;
 

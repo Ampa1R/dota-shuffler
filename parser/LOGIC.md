@@ -13,7 +13,7 @@
 ### items
 - name
 - short name
-- icon (`http://cdn.dota2.com/apps/dota2/images/items/${shortName}_lg.png`)
+- icon (`https://cdn.dota2.com/apps/dota2/images/items/${shortName}_lg.png`)
 - sort by type:
     - boots
     - complex / not

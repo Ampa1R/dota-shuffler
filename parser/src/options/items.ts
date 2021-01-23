@@ -4,7 +4,7 @@ import whitelist from '../../whitelist.json';
 import { itemsApi } from '../enums/api';
 import { ItemModel } from '../../../src/models/index';
 
-const itemImagesBaseUrl = 'http://cdn.dota2.com/apps/dota2/images/items';
+const itemImagesBaseUrl = 'https://cdn.dota2.com/apps/dota2/images/items';
 
 type ItemFromApi = {
     id: number;

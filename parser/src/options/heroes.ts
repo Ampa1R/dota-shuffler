@@ -3,7 +3,7 @@ import fs from 'fs';
 import { heroesApi, abilitiesApi } from '../enums/api';
 import { HeroModel, TalentModel } from '../../../src/models/index';
 
-const heroImagesBaseUrl = 'http://cdn.dota2.com/apps/dota2/images/heroes';
+const heroImagesBaseUrl = 'https://cdn.dota2.com/apps/dota2/images/heroes';
 
 interface HeroFromApi {
     id: number;
