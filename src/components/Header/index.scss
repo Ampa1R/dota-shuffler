@@ -1,19 +1,8 @@
 .Header {
-    margin-bottom: 20px;
-
-    @media screen and (max-width: 550px) {
-       margin-bottom: 0;
-    }
-
     &__Title {
         font-size: 28px;
         text-transform: uppercase;
         font-weight: 500;
         line-height: 1.7;
-    }
-
-    &__Tagline {
-        font-size: 20px;
-        opacity: 0.4;
     }
 }

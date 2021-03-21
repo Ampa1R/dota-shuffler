@@ -26,15 +26,6 @@ export interface ResultModel {
     items: ItemModel[];
 }
 
-export interface AbilityModel {
-    id: number;
-    shortName: string;
-    name: string;
-    description: string;
-    cooldown: string;
-    manacost: string;
-}
-
 export interface TalentModel {
     id: number;
     name?: string;
