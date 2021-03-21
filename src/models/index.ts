@@ -22,3 +22,18 @@ export interface ResultModel {
     boot: ItemModel | undefined;
     items: ItemModel[];
 }
+
+export interface AbilityModel {
+    id: number;
+    shortName: string;
+    name: string;
+    description: string;
+    cooldown: string;
+    manacost: string;
+}
+
+export interface TalentModel {
+    id: number;
+    name?: string;
+    shortName: string;
+}

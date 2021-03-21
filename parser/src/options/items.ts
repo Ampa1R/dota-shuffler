@@ -26,9 +26,7 @@ export const getItems = async (): Promise<void> => {
     const res = await axios.get(itemsApi);
     const formattedItems: ItemModel[] = Object.values(res.data)
         .filter(
-            ({ shortName }: ItemFromApi) =>
-                whitelist.items.includes(shortName) ||
-                whitelist.boots.includes(shortName),
+            ({ shortName }: ItemFromApi) => whitelist.items.includes(shortName) || whitelist.boots.includes(shortName),
         )
         .map((item: ItemFromApi) => ({
             id: item.id,
