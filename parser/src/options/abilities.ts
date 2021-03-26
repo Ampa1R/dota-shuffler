@@ -21,12 +21,16 @@ interface AbilityFromApi {
     };
 }
 
+interface AbilitiesObject {
+    [key: string]: object
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export const getAbilities = async (directoryPath: string): Promise<void> => {
     console.log('Parsing Abilities');
     // Talents
     const abilitiesRes = await axios.get(abilitiesApi);
-    const abilities: AbilityModel[] = [];
+    const abilities: AbilitiesObject = {};
     Object.values(abilitiesRes.data)
         .filter(
             (item: AbilityFromApi) =>
@@ -38,17 +42,16 @@ export const getAbilities = async (directoryPath: string): Promise<void> => {
                 item.language.displayName,
         )
         .forEach((item: AbilityFromApi) => {
-            abilities.push({
+            abilities[item.id] = {
                 id: item.id,
                 name: item.language.displayName,
                 shortName: item.name,
                 description: item.language.description.join(' '),
                 cooldown: item.stat.cooldown.join(' / '),
                 manacost: item.stat.manaCost.join(' / '),
-            });
+            };
         });
 
-    console.log(abilities.length);
     fs.writeFile(`${directoryPath}/abilities.json`, JSON.stringify(abilities), 'utf8', (err): void => {
         if (err) {
             console.log('An error occured while saving abilities to file.');
